@@ -1,0 +1,1200 @@
+/* Reset Basic */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Montserrat', sans-serif;
+}
+
+/* Palet Warna Earth Tone & Moss */
+:root {
+    --dark-moss: #0d1117;     /* Background Gelap/Navy */
+    --sage-green: #38bdf8;    /* Biru terang modern */
+    --card-bg: #161b22;      /* Latar belakang kartu/box */
+    --accent-gold: #38bdf8;   /* Ubah aksen emas menjadi BIRU */
+    --text-light: #f8fafc;    /* Teks utama putih */
+    --text-dark: #94a3b8;     /* Teks sekunder/subtitle abu-abu */
+}
+
+/* Background Dual-Tone Gradasi Diagonal Sesuai Referensi Gambar */
+body {
+    /* Mengatur Gradasi Warna Background */
+    background: linear-gradient(135deg, #0b0b0b 10%, #0b0b0b 46%, #0b0b0b 50%, #0b0b0b 10%);
+    background-attachment: fixed;
+    color: var(--text-light);
+    line-height: 1.6;
+    position: relative;
+    overflow-x: hidden;
+}
+
+/* OVERLAY BAYANGAN DAUN PALEM DAN BIAS CAHAYA */
+.sunlight-shadow-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    pointer-events: none;
+    z-index: 1;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1000 1000'%3E%3Cg fill='%231B2A17' opacity='0.3'%3E%3Cpath d='M-100,1050 C50,850 250,700 650,750 C450,780 250,880 -100,1050 Z'/%3E%3Cpath d='M-80,1030 Q100,820 280,720 Q120,830 -80,1030 Z'/%3E%3Cpath d='M-60,1010 Q140,800 340,680 Q160,800 -60,1010 Z'/%3E%3Cpath d='M-40,990 Q180,780 400,640 Q200,770 -40,990 Z'/%3E%3Cpath d='M-20,970 Q220,760 460,600 Q240,740 -20,970 Z'/%3E%3C/g%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: left bottom;
+    background-size: 900px;
+    filter: blur(4px);
+}
+
+/* Floating Navbar Wrapper */
+.floating-nav {
+    position: fixed;
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 1000;
+    width: auto;
+    max-width: 90%;
+}
+
+/* Nav Pill Container */
+.nav-container {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    background: rgba(22, 27, 34, 0.85); /* Latar transparan gelap */
+    backdrop-filter: blur(12px); /* Efek kaca buram */
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    padding: 6px 10px;
+    border-radius: 40px; /* Membuat sudut elips bulat sempurna */
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+}
+
+/* Nav Item Link */
+.nav-item {
+    display: flex;
+    align-items: center; /* Membuat ikon dan teks sejajar tengah */
+    gap: 8px;            /* Jarak antara ikon dan teks */
+    padding: 8px 16px;
+    color: #94a3b8;
+    text-decoration: none;
+    font-size: 14px;
+    border-radius: 20px;
+    transition: all 0.3s ease;
+}
+
+.nav-item i {
+    font-size: 14px; /* Ukuran ikon menyesuaikan teks */
+}
+
+/* Hover State */
+.nav-item:hover {
+    color: #ffffff;
+    background: rgba(255, 255, 255, 0.05);
+}
+
+/* Active State (Tombol Ungu/Biru Menyala seperti di gambar) */
+.nav-item.active {
+    background: #38bdf8; /* Ubah ke #38bdf8 jika ingin warna biru elektrik */
+    color: #ffffff;
+    font-weight: 600;
+    box-shadow: 0 0 12px rgba(139, 92, 246, 0.4);
+}
+
+/* 1. PERBAIKAN: Logo RIKA MARYANI diperbesar */
+.logo {
+    font-weight: 900;
+    font-size: 20px; /* Diperbesar */
+    letter-spacing: 2px;
+    color: var(--text-light);
+}
+
+/* 2. PERBAIKAN: Menu Navigasi diubah ke warna Dark Moss Green */
+.nav-links {
+    display: flex;
+    gap: 30px;
+    list-style: none;
+}
+
+.nav-links a {
+    text-decoration: none;
+    color: var(--accent-gold);
+    font-size: 14px;
+    font-weight: 800;
+    letter-spacing: 1.5px;
+    position: relative;
+    padding-bottom: 4px;
+    transition: color 0.3s ease;
+    cursor: pointer; /* Menampilkan kursor berbentuk tangan petunjuk */
+}
+
+/* Garis bawah meluncur saat hover */
+.nav-links a::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0%;
+    height: 2px;
+    background-color: #EAE6DF; /* Warna garis saat hover */
+    transition: width 0.3s ease;
+}
+
+/* Efek saat kursor menempel di atas teks */
+.nav-links a:hover {
+    color: #EAE6DF; /* Warna teks berubah jadi cream terang */
+}
+
+.nav-links a:hover::after {
+    width: 100%; /* Garis penuh dari kiri ke kanan */
+}
+
+.hero {
+    position: relative; /* Ditambahkan agar canvas bisa menempel sempurna */
+    overflow: hidden;   /* Ditambahkan agar komet tidak keluar dari area hero */
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding-top: 60px;
+    box-sizing: border-box;
+}
+
+/* KODE BARU DIBAWAH INI */
+#hero-canvas {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    pointer-events: none;
+}
+
+.hero-text {
+    position: relative;
+    z-index: 2; /* Memastikan teks tetap terlihat di atas canvas */
+    max-width: 800px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: -40px;
+}
+
+.sub-title {
+    color: #38bdf8; /* Ganti kode warna sesuai keinginan di sini */
+    font-size: 30px;
+    letter-spacing: 3px;
+    font-weight: 700;
+    display: block;
+    margin-bottom: 10px;
+}
+
+//* Container Judul */
+.title-container {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: fit-content;
+    margin-bottom: 45px;
+}
+
+.main-title {
+    color: #FFFFFF; /* Ganti dengan warna pilihanmu (misal #FFFFFF untuk putih) */
+    font-size: 70px;
+    font-weight: 800;
+    font-family: 'Montserrat', sans-serif;
+    line-height: 1.2;
+}
+
+/* Tulisan Latin - Tepat Presisi di Tengah Kata PORTFOLIO */
+.script-title {
+    font-family: 'Great Vibes', cursive;
+    font-size: 78px;
+    color: var(--accent-gold);
+    white-space: nowrap;
+    text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.4);
+    pointer-events: none;
+    width: max-content;
+    text-align: center;
+}
+
+/* 4. PERBAIKAN: Penulisan RIKA MARYANI - HR Specialist dibuat agak kebawahan */
+.hero .author {
+    color: #f8f9f8; /* Ganti var(--text-light) di baris 166 dengan kode warna favoritmu */
+    font-size: 18px;
+    font-weight: 600;
+    margin-top: 25px;
+    letter-spacing: 1px;
+}
+
+/* 5. PERBAIKAN: Foto diselaraskan dengan warna Earth Tone */
+.hero-image-box {
+    width: 46%;
+    height: 400px;
+    position: relative;
+    
+    /* CARA GESER POSISI: */
+    top: 0px;    /* Ubah misal: 20px (turun) atau -20px (naik) */
+    left: 20px;   /* Ubah misal: 30px (geser ke kanan) atau -30px (geser ke kiri) */
+    
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: none; 
+}
+
+.hero-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    /* Filter untuk menyelaraskan ke tone hangat / earth tone */
+    filter: sepia(0.15) contrast(1.02) brightness(0.95);
+}
+
+/* Sections General */
+.section {
+    padding: 50px 8%;
+    position: relative;
+    z-index: 2;
+}
+
+.grid-2 {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 30px;
+}
+
+.card {
+    background-color: var(--card-bg);
+    padding: 35px;
+    border-radius: 12px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+}
+
+.card h2, .section h2 {
+    font-size: 22px;
+    font-weight: 800;
+    letter-spacing: 2px;
+    margin-bottom: 20px;
+    color: var(--dark-moss);
+}
+
+.profile-box {
+    display: flex;
+    gap: 20px;
+    align-items: center;
+}
+
+.profile-photo {
+    width: 90px;
+    height: 110px;
+    background: linear-gradient(135deg, var(--dark-moss), #3E5738);
+    color: var(--text-light);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 8px;
+    font-weight: 700;
+    font-size: 11px;
+}
+
+.experience-list {
+    list-style: none;
+}
+
+.experience-list li {
+    margin-bottom: 15px;
+    padding-bottom: 15px;
+    border-bottom: 1px solid #C5C0AA;
+}
+
+.grid-3 {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 25px;
+}
+
+.project-card {
+    background-color: var(--card-bg);
+    padding: 15px;
+    border-radius: 12px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+}
+
+.card-img {
+    width: 100%;
+    height: 160px;
+    object-fit: cover;
+    border-radius: 8px;
+    margin-bottom: 12px;
+    filter: sepia(0.1);
+}
+
+.project-card h3 {
+    font-size: 13px;
+    font-weight: 800;
+    text-align: center;
+    letter-spacing: 1px;
+    color: var(--dark-moss);
+}
+
+.contact-section {
+    text-align: center;
+    background-color: var(--card-bg);
+    margin-top: 50px;
+    padding: 60px 8%;
+    border-radius: 16px 16px 0 0;
+}
+
+.contact-section h2 {
+    font-size: 38px;
+    margin-bottom: 5px;
+}
+
+.sub-contact {
+    font-size: 13px;
+    letter-spacing: 3px;
+    font-weight: 700;
+    color: var(--dark-moss);
+    margin-bottom: 30px;
+}
+
+.contact-links {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}
+
+.contact-item {
+    text-decoration: none;
+    padding: 12px 28px;
+    background: var(--dark-moss);
+    color: var(--text-light);
+    border-radius: 6px;
+    font-weight: 700;
+    font-size: 12px;
+}
+/* --- CONTAINER EFEK DAUN JATUH --- */
+#leaf-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    pointer-events: none;
+    z-index: 2;
+    overflow: hidden;
+}
+
+/* --- ELEMEN DAUN --- */
+.leaf {
+    position: absolute;
+    top: -50px;
+    background-size: contain;
+    background-repeat: no-repeat;
+    opacity: 0.7;
+    animation: fall linear infinite;
+}
+
+/* ANIMASI GERAKAN JATUH & MELAYANG SIK-SAK */
+@keyframes fall {
+    0% {
+        top: -10%;
+        transform: translateX(0) rotate(0deg);
+        opacity: 0;
+    }
+    10% {
+        opacity: 0.8;
+    }
+    50% {
+        transform: translateX(60px) rotate(180deg);
+    }
+    90% {
+        opacity: 0.8;
+    }
+    100% {
+        top: 105%;
+        transform: translateX(-40px) rotate(360deg);
+        opacity: 0;
+    }
+}
+/* --- TAMPILAN TERPISAH ABOUT & EXPERIENCE --- */
+.section-container {
+    padding: 60px 20px;
+    display: flex;
+    justify-content: center;
+}
+
+.content-box {
+    width: 100%;
+    max-width: 800px; /* Lebar konten agar sejajar dan nyaman dibaca */
+    text-align: left;
+}
+
+.section-title {
+    width: 100%;
+    font-size: 24px;
+    font-weight: 700;
+    color: var(--accent-gold, #D4A373);
+    margin-bottom: 25px;
+    letter-spacing: 2px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    padding-bottom: 10px;
+}
+
+.about-text {
+    font-size: 16px;
+    line-height: 1.8;
+    color: var(--text-light, #FFFFFF);
+    opacity: 0.9;
+}
+
+.about-grid {
+    display: grid;
+    grid-template-columns: 1.2fr 0.8fr;
+    gap: 32px;
+    align-items: start;
+}
+
+/* Detail Experience */
+.experience-item {
+    margin-bottom: 30px;
+}
+
+.exp-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.exp-header h3 {
+    font-size: 18px;
+    color: #FFFFFF;
+    margin: 0;
+}
+
+.exp-date {
+    font-size: 14px;
+    color: var(--accent-gold, #D4A373);
+}
+
+.company-name {
+    font-size: 14px;
+    font-style: italic;
+    opacity: 0.8;
+    margin: 5px 0 10px 0;
+}
+
+.experience-item ul {
+    padding-left: 20px;
+    line-height: 1.6;
+    opacity: 0.9;
+}
+/* ==========================================================================
+   LAYOUT & CONTAINERS
+   ========================================================================== */
+.section-container {
+    max-width: 960px;
+    margin: 0 auto;
+    padding: 40px 24px; /* Ubah 80px jadi 40px agar lebih rapat */
+}
+
+.section-header {
+    margin-bottom: 32px;
+}
+
+.section-header.center {
+    text-align: center;
+}
+
+.section-title {
+    font-size: 28px;
+    font-weight: 800;
+    color: #FFFFFF;
+    letter-spacing: -0.5px;
+}
+
+.section-subtitle {
+    font-size: 14px;
+    color: #9CA3AF;
+    margin-top: 6px;
+}
+
+/* ==========================================================================
+   ABOUT ME SECTION
+   ========================================================================== */
+.about-grid {
+    display: grid;
+    grid-template-columns: 1.2fr 0.8fr;
+    gap: 20px;
+    align-items: start;
+}
+
+.about-text p {
+    font-size: 15px;
+    line-height: 1.6;
+    color: #D1D5DB;
+    text-align: justify;
+}
+
+/* Styling awal kotak di samping About Me */
+.about-card {
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 12px;
+    padding: 24px;
+    transition: all 0.3s ease; /* Memberikan transmisi animasi yang halus */
+}
+
+/* Efek saat kursor diarahkan (HOVER) */
+.about-card:hover {
+    border-color: #38bdf8; /* Mengubah warna border menjadi Electric Blue */
+    box-shadow: 0 0 15px rgba(56, 189, 248, 0.25); /* Efek glow/sinar biru lembut */
+    transform: translateY(-2px); /* Kotak sedikit terangkat halus */
+}
+
+.section-header {
+    text-align: left;
+    margin-bottom: 20px;
+}
+
+.section-title {
+    font-size: 32px;
+    font-weight: 700;
+    color: var(--accent-blue, #D1D5DB);
+}
+
+.card-title {
+    font-size: 16px;
+    font-weight: 700;
+    color: var(--accent-gold, #D4A373);
+    margin-bottom: 16px;
+}
+
+.skill-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.skill-list li {
+    font-size: 13px;
+    color: #E5E7EB;
+    padding: 10px 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.skill-list li:last-child {
+    border-bottom: none;
+    padding-bottom: 0;
+}
+
+/* ==========================================================================
+   EXPERIENCE SECTION (CARD STYLE)
+   ========================================================================== */
+.experience-list {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.exp-card {
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.07);
+    border-radius: 14px;
+    padding: 24px;
+    transition: all 0.25s ease;
+}
+
+.exp-card:hover {
+    border-color: rgba(212, 163, 115, 0.3);
+    transform: translateY(-2px);
+}
+
+.exp-card-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 12px;
+}
+
+.exp-role {
+    font-size: 18px;
+    font-weight: 700;
+    color: #FFFFFF;
+    margin: 0;
+}
+
+.exp-company {
+    display: block;
+    font-size: 13px;
+    color: var(--accent-gold, #D4A373);
+    font-weight: 500;
+    margin-top: 4px;
+}
+
+.exp-date {
+    font-size: 12px;
+    color: #9CA3AF;
+    background: rgba(255, 255, 255, 0.06);
+    padding: 4px 10px;
+    border-radius: 20px;
+    white-space: nowrap;
+}
+
+.exp-desc {
+    font-size: 14px;
+    line-height: 1.6;
+    color: #9CA3AF;
+    margin-bottom: 16px;
+}
+
+.exp-tags {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+}
+
+.exp-tags span {
+    font-size: 11px;
+    font-weight: 500;
+    color: var(--accent-gold, #D4A373);
+    background: rgba(212, 163, 115, 0.08);
+    padding: 4px 10px;
+    border-radius: 6px;
+}
+
+/* RESPONSIVE LAYOUT (MOBILE) */
+@media (max-width: 768px) {
+    .about-grid {
+        grid-template-columns: 1fr;
+    }
+    .exp-card-top {
+        flex-direction: column;
+        gap: 10px;
+    }
+}
+
+/* --- EXPERIENCE TIMELINE STYLE --- */
+.timeline-container {
+    position: relative;
+    padding-left: 30px;
+}
+
+/* Garis Vertikal di Sebelah Kiri */
+.timeline-container::before {
+    content: '';
+    position: absolute;
+    left: 7px;
+    top: 15px;
+    bottom: 15px;
+    width: 2px;
+    background: rgba(255, 255, 255, 0.1);
+}
+
+.timeline-item {
+    position: relative;
+    margin-bottom: 30px;
+}
+
+/* Titik / Bulatan di Garis Timeline */
+.timeline-dot {
+    position: absolute;
+    left: -30px;
+    top: 28px;
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: var(--accent-blue, #38bdf8);
+    box-shadow: 0 0 10px rgba(56, 189, 248, 0.5);
+    border: 2px solid #0d1117;
+}
+
+/* Desain Kartu Pengalaman */
+.exp-card {
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 16px;
+    padding: 24px 28px;
+    transition: all 0.25s ease;
+}
+
+.exp-card:hover {
+    border-color: rgba(56, 189, 248, 0.4);
+    transform: translateY(-2px);
+}
+
+.exp-card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 12px;
+}
+
+.exp-role {
+    font-size: 20px;
+    font-weight: 700;
+    color: #ffffff;
+    margin: 0;
+}
+
+.exp-company {
+    display: block;
+    font-size: 14px;
+    color: var(--accent-blue, #38bdf8);
+    margin-top: 4px;
+    font-weight: 500;
+}
+
+.exp-badge {
+    background: rgba(255, 255, 255, 0.06);
+    color: #94a3b8;
+    font-size: 12px;
+    padding: 4px 12px;
+    border-radius: 20px;
+}
+
+.exp-desc {
+    font-size: 14px;
+    line-height: 1.7;
+    color: #94a3b8;
+    margin: 16px 0;
+}
+
+.exp-tags {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+}
+
+.exp-tags span {
+    font-size: 11px;
+    color: var(--accent-blue, #38bdf8);
+    background: rgba(56, 189, 248, 0.1);
+    padding: 4px 10px;
+    border-radius: 6px;
+}
+
+/* --- ROLE BADGE ANIMATION STYLE --- */
+.hero-role-container {
+    font-size: 24px;
+    font-weight: 600;
+    color: #ffffff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 20px;
+}
+
+.role-badge {
+    background-color: var(--accent-blue, #38bdf8);
+    color: #0d1117; /* Warna teks gelap di dalam badge */
+    padding: 6px 16px;
+    border-radius: 12px;
+    font-weight: 700;
+    display: inline-block;
+    transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+/* Class saat teks sedang berganti */
+.role-badge.fade-out {
+    opacity: 0;
+    transform: translateY(-8px);
+}
+
+/* --- ABOUT ME SECTION STYLE --- */
+.about-grid {
+    display: grid;
+    grid-template-columns: 1.2fr 0.8fr;
+    gap: 40px;
+    align-items: center;
+    margin-top: 30px;
+}
+
+.about-text p {
+    font-size: 15px;
+    line-height: 1.8;
+    color: #94a3b8;
+    margin-bottom: 16px;
+}
+
+.about-visual {
+    background: #161b22;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 16px;
+    padding: 12px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+}
+
+.about-img {
+    width: 100%;
+    height: 300px;
+    object-fit: cover;
+    border-radius: 12px;
+    display: block;
+}
+
+/* Responsif untuk layar HP */
+@media (max-width: 768px) {
+    .about-grid {
+        grid-template-columns: 1fr;
+        gap: 24px;
+    }
+}
+/* --- TAB SWITCHING SYSTEM --- */
+.section-container {
+    display: none;
+}
+
+.section-container.active {
+    display: block;
+}
+/* Buat efek scroll meluncur halus ke section tujuan */
+html {
+    scroll-behavior: smooth;
+}
+
+/* Biarkan semua section tetap tampil normal saat di-scroll */
+.section-container {
+    display: block;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+section {
+    scroll-margin-top: 70px;
+}
+
+#experience p {
+    text-align: justify;
+}
+
+/* =========================================================
+   SKILLS SECTION STYLING
+   ========================================================= */
+.section-subtitle {
+    text-align: center;
+    color: #94a3b8;
+    font-size: 15px;
+    margin-top: -10px;
+    margin-bottom: 40px;
+}
+
+.skills-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 24px;
+}
+
+.skills-card {
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 12px;
+    padding: 24px;
+    transition: all 0.3s ease;
+}
+
+.skills-card:hover {
+    border-color: #38bdf8;
+    box-shadow: 0 0 15px rgba(56, 189, 248, 0.25);
+    transform: translateY(-3px);
+}
+
+.skills-category {
+    font-size: 18px;
+    font-weight: 600;
+    color: #ffffff;
+    margin-bottom: 20px;
+    border-left: 3px solid #38bdf8;
+    padding-left: 10px;
+}
+
+.skills-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.skill-tag {
+    background: rgba(56, 189, 248, 0.08);
+    color: #38bdf8;
+    border: 1px solid rgba(56, 189, 248, 0.2);
+    padding: 8px 14px;
+    border-radius: 20px;
+    font-size: 13px;
+    font-weight: 500;
+    transition: all 0.2s ease;
+}
+
+.skill-tag:hover {
+    background: #38bdf8;
+    color: #0d1117;
+    cursor: default;
+}
+
+/* =========================================================
+   CERTIFICATES SECTION STYLING
+   ========================================================= */
+.certificates-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 24px;
+}
+
+.certificate-card {
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 12px;
+    overflow: hidden;
+    transition: all 0.3s ease;
+}
+
+.certificate-card:hover {
+    border-color: #38bdf8;
+    box-shadow: 0 0 15px rgba(56, 189, 248, 0.25);
+    transform: translateY(-4px);
+}
+
+.cert-image-container {
+    width: 100%;
+    height: 260px; /* Menambah tinggi kontainer agar sertifikat muat */
+    background: rgba(0, 0, 0, 0.2); /* Latar belakang gelap jika ada sisa ruang */
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.cert-image {
+    width: 100%;
+    height: 100%;
+    object-fit: contain; /* Menampilkan seluruh gambar sertifikat tanpa terpotong */
+    transition: transform 0.3s ease;
+}
+
+.certificate-card:hover .cert-image {
+    transform: scale(1.05);
+}
+
+.cert-content {
+    padding: 20px;
+}
+
+.cert-issuer {
+    font-size: 12px;
+    color: #38bdf8;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.cert-title {
+    font-size: 16px;
+    font-weight: 600;
+    color: #ffffff;
+    margin: 8px 0;
+}
+
+.cert-date {
+    font-size: 13px;
+    color: #94a3b8;
+    margin: 0;
+}
+
+/* =========================================================
+   CONTACT & FOOTER SECTION STYLING
+   ========================================================= */
+#contact {
+    padding-bottom: 60px;
+}
+
+.contact-card-wrapper {
+    background: rgba(255, 255, 255, 0.02);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 20px;
+    padding: 50px 40px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+    backdrop-filter: blur(10px);
+}
+
+.contact-badge {
+    background: rgba(56, 189, 248, 0.1);
+    color: #38bdf8;
+    border: 1px solid rgba(56, 189, 248, 0.3);
+    padding: 6px 16px;
+    border-radius: 30px;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    display: inline-block;
+    margin-bottom: 16px;
+}
+
+.contact-title {
+    font-size: 36px;
+    font-weight: 800;
+    color: #ffffff;
+    margin-bottom: 12px;
+}
+
+.contact-subtitle {
+    color: #94a3b8;
+    font-size: 15px;
+    max-width: 600px;
+    margin: 0 auto 40px auto;
+    line-height: 1.6;
+}
+
+.contact-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+}
+
+.contact-item-card {
+    display: flex;
+    align-items: center;
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    padding: 18px 20px;
+    border-radius: 14px;
+    text-decoration: none;
+    transition: all 0.3s ease;
+}
+
+.contact-item-card:hover {
+    border-color: #38bdf8;
+    background: rgba(56, 189, 248, 0.05);
+    box-shadow: 0 0 20px rgba(56, 189, 248, 0.2);
+    transform: translateY(-3px);
+}
+
+.contact-icon-box {
+    width: 46px;
+    height: 46px;
+    border-radius: 10px;
+    background: rgba(56, 189, 248, 0.1);
+    color: #38bdf8;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 20px;
+    margin-right: 16px;
+    transition: all 0.3s ease;
+}
+
+.contact-item-card:hover .contact-icon-box {
+    background: #38bdf8;
+    color: #0d1117;
+}
+
+.contact-info {
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+    flex-grow: 1;
+    min-width: 0; /* Penting agar teks panjang bisa terpotong rapi dengan ellipsis jika terlalu sempit */
+}
+
+.contact-label {
+    font-size: 12px;
+    color: #64748b;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.contact-value {
+    font-size: 14px;
+    color: #f1f5f9;
+    font-weight: 600;
+    margin-top: 2px;
+}
+
+.contact-arrow {
+    color: #64748b;
+    font-size: 14px;
+    transition: all 0.3s ease;
+}
+
+.contact-item-card:hover .contact-arrow {
+    color: #38bdf8;
+    transform: translate(2px, -2px);
+}
+
+/* FOOTER */
+.footer {
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
+    padding: 30px 20px;
+    text-align: center;
+    background: #0d1117;
+}
+
+.copyright {
+    color: #64748b;
+    font-size: 14px;
+    margin-bottom: 4px;
+}
+
+.built-with {
+    color: #475569;
+    font-size: 12px;
+}
+
+/* =========================================================
+   PRELOADER STYLING
+   ========================================================= */
+#preloader {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background-color: #0d1117;
+    z-index: 9999;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: opacity 0.6s ease, visibility 0.6s ease;
+}
+
+#preloader.fade-out {
+    opacity: 0;
+    visibility: hidden;
+}
+
+.loader-content {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
+}
+
+.spinner {
+    width: 48px;
+    height: 48px;
+    border: 3px solid rgba(56, 189, 248, 0.15);
+    border-top: 3px solid #38bdf8;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+    box-shadow: 0 0 15px rgba(56, 189, 248, 0.3);
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+.loader-text {
+    color: #94a3b8;
+    font-size: 14px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    font-weight: 600;
+}
